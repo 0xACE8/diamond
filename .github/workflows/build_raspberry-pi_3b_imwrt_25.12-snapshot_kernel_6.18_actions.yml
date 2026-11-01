@@ -132,7 +132,7 @@ jobs:
       id: check_env
       run: |
         find ${{ github.workspace }}/private_data -name "*.sh" -exec chmod +x {} +
-        ${{ env.CHECK_SERVER }}
+        # ${{ env.CHECK_SERVER }}
 
     - name: Sync and Wait for Plugin Repo (プラグインリポジトリの同期と待機)
       run: |
