@@ -171,7 +171,7 @@ jobs:
       env:
         GH_TOKEN: ${{ env.ACCESS_TOKEN }}
       run: |
-        ${{ env.DWLOAD_CACHE }}
+        # ${{ env.DWLOAD_CACHE }}
 
     - name: Update & Install Feeds (フィードの更新とインストール)
       working-directory: ./openwrt
