@@ -100,7 +100,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-26.04-arm
+    runs-on: ubuntu-24.04
 
     permissions: write-all
 
@@ -132,9 +132,7 @@ jobs:
       id: check_env
       run: |
         find ${{ github.workspace }}/private_data -name "*.sh" -exec chmod +x {} +
-        # ${{ env.CHECK_SERVER }}
-        lscpu
-        cat /proc/cpuinfo
+        ${{ env.CHECK_SERVER }}
 
     - name: Sync and Wait for Plugin Repo (プラグインリポジトリの同期と待機)
       run: |
@@ -171,7 +169,7 @@ jobs:
       env:
         GH_TOKEN: ${{ env.ACCESS_TOKEN }}
       run: |
-        # ${{ env.DWLOAD_CACHE }}
+        ${{ env.DWLOAD_CACHE }}
 
     - name: Update & Install Feeds (フィードの更新とインストール)
       working-directory: ./openwrt
@@ -287,4 +285,3 @@ jobs:
         keep_latest: 5
         delete_tags: true
         delete_tag_pattern: "${{ env.TARGET_MODEL }}_${{ env.GIT_HEAD_REF }}" 
-
